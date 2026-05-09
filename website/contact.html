@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact ANJ Construction Inc. for a free residential or commercial masonry estimate." />
+  <title>Contact - ANJ Construction Inc.</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="ANJ Construction Inc. home"><span class="nav__mark">ANJ</span><span class="nav__suffix">Construction Inc.</span></a>
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="reviews.html">Reviews</a><a href="contact.html" class="is-active">Contact</a>
+      </nav>
+      <div class="nav__actions"><a href="tel:+17709000163" class="nav__phone">(770) 900-0163</a><a href="contact.html" class="btn btn--primary nav__cta">Request Quote</a></div>
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero__grid">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h1>Request a free masonry estimate.</h1>
+          <p>Tell ANJ Construction about your residential or commercial masonry project, repair, chimney, patio, exterior improvement or addition scope.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container contact__grid">
+        <div>
+          <p class="section-kicker">Request quote</p>
+          <h2>Project details</h2>
+          <form id="contact-form" class="contact-form" action="https://formspree.io/f/TODO_FORM_ID" method="POST" novalidate>
+            <div class="form-row">
+              <label><span>Your name <b>*</b></span><input name="name" type="text" required /></label>
+              <label><span>Email <b>*</b></span><input name="email" type="email" required /></label>
+            </div>
+            <div class="form-row">
+              <label><span>Project location</span><input name="location" type="text" /></label>
+              <label><span>Phone</span><input name="phone" type="tel" /></label>
+            </div>
+            <fieldset>
+              <legend>Scope</legend>
+              <div class="scope-options">
+                <button type="button" data-scope="Brick">Brick</button>
+                <button type="button" data-scope="Stone">Stone</button>
+                <button type="button" data-scope="Block">Block</button>
+                <button type="button" data-scope="Repair">Repair</button>
+                <button type="button" data-scope="Commercial">Commercial</button>
+              </div>
+              <input id="scope-input" name="scope" type="hidden" />
+            </fieldset>
+            <label><span>Message</span><textarea id="message" name="message" rows="5"></textarea></label>
+            <div class="form-actions">
+              <button class="btn btn--dark" type="submit">Submit</button>
+              <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+
+        <aside class="contact-card" aria-label="Contact details">
+          <div class="contact-item"><span>P</span><p><a href="tel:+17709000163">(770) 900-0163</a><br />8:00 AM - 5:00 PM</p></div>
+          <div class="contact-item"><span>E</span><p><a href="mailto:lidyflores1981@icloud.com">lidyflores1981@icloud.com</a><br />Replies within 24-48 hours</p></div>
+          <div class="contact-item"><span>A</span><p>Georgia service area<br />Winder, Lawrenceville, Metro Atlanta, Savannah and surrounding areas</p></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom">
+      <p>&copy; <span id="year"></span> ANJ Construction Inc. All rights reserved.</p>
+      <p>Brick &middot; Block &middot; Stone &middot; Repair</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

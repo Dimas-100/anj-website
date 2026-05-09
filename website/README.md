@@ -46,8 +46,8 @@ anj/
     |-- index.html
     |-- about.html
     |-- projects.html
-    |-- projects-residential.html
-    |-- projects-commercial.html
+    |-- reviews.html
+    |-- contact.html
     |-- services.html
     |-- styles.css
     |-- script.js
