@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    
+  </defs>
+  <text class="w-anj" x="400" y="240" text-anchor="middle">ANJ</text>
+  <text class="w-ci" x="400" y="310" text-anchor="middle">CONSTRUCTION INC.</text>
+  <line x1="240" y1="345" x2="560" y2="345" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1"></line>
+  <text class="w-resi" x="400" y="385" text-anchor="middle">RESIDENTIAL &amp; COMMERCIAL</text>
+  <text class="w-tag" x="400" y="430" text-anchor="middle">BRICK · STONE · BLOCK</text>
+</svg>
