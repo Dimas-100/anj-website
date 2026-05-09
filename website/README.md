@@ -1,6 +1,6 @@
 # ANJ Construction Website
 
-This project is a static website served from the `website` folder inside the renamed `anj` workspace.
+This project is a static website in the `website` folder. Shared brand and project images live in the root `assets` folder.
 
 ## Main Files
 
@@ -8,7 +8,7 @@ This project is a static website served from the `website` folder inside the ren
 - `styles.css` - layout, colors, responsive design, and visual styling
 - `script.js` - mobile navigation, project filters, service tabs, footer year, and form demo behavior
 
-You can open `index.html` directly in a browser. For a local server, run commands from `anj/website`:
+For a local server, run commands from `anj/website`:
 
 ```powershell
 npm run dev
@@ -17,7 +17,7 @@ npm run dev
 Then visit:
 
 ```text
-http://localhost:5173
+http://localhost:5173/website/
 ```
 
 ## Editing
@@ -39,6 +39,9 @@ The workspace is intentionally small. The website is separate from the reusable 
 ```text
 anj/
 |-- assets/
+|   |-- img/
+|   |   |-- apartment-savanah.jpg
+|   |   `-- chimney-winder.jpg
 |   |-- anj-logo-horizontal.svg
 |   |-- anj-logo-primary.svg
 |   `-- anj-mark-square.svg

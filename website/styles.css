@@ -692,6 +692,14 @@ h2 {
   background-image: url("https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=900&q=80");
 }
 
+.photo--apartment-savannah {
+  background-image: url("../assets/img/apartment-savanah.jpg");
+}
+
+.photo--chimney-winder {
+  background-image: url("../assets/img/chimney-winder.jpg");
+}
+
 .gallery-photo--home {
   background-image: url("https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80");
 }
@@ -1490,7 +1498,6 @@ h2 {
 
 .section-heading > p:not(.section-kicker),
 .section-heading--split > p,
-.why-intro p,
 .about-preview p,
 .content-note {
   color: var(--muted);
@@ -1514,8 +1521,6 @@ h2 {
   background: var(--cream);
 }
 
-.service-preview-grid,
-.why-card-grid,
 .testimonial-grid {
   margin-top: 52px;
   display: grid;
@@ -1523,24 +1528,65 @@ h2 {
   gap: 26px;
 }
 
-.service-card,
-.why-card,
 .testimonial-card {
   background: var(--white);
   border: 1px solid var(--border);
   box-shadow: 0 2px 0 rgb(26 23 20 / 0.06);
 }
 
-.service-card {
-  min-height: 310px;
-  padding: 30px;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+.service-preview-layout {
+  margin-top: 54px;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.48fr) minmax(0, 1fr);
+  gap: 42px;
+  align-items: stretch;
 }
 
-.service-card:hover,
-.project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 34px rgb(26 23 20 / 0.12);
+.service-preview-panel {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: minmax(280px, 1fr) auto;
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 14px 14px 0 rgb(200 16 46 / 0.22);
+}
+
+.service-preview-panel .photo {
+  min-height: 320px;
+}
+
+.service-preview-panel > div:last-child {
+  padding: 28px;
+}
+
+.service-preview-panel span {
+  display: block;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.service-preview-panel p {
+  margin: 14px 0 0;
+  color: rgb(255 250 242 / 0.74);
+  line-height: 1.7;
+}
+
+.service-preview-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.service-card {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .card-icon {
@@ -1563,28 +1609,16 @@ h2 {
   stroke-linejoin: round;
 }
 
-.service-card h3,
-.why-card h3 {
-  margin: 28px 0 12px;
+.service-card h3 {
+  margin: 0 0 8px;
   font-size: 22px;
 }
 
 .service-card p,
-.why-card p,
 .testimonial-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
-}
-
-.service-card a {
-  display: inline-block;
-  margin-top: 22px;
-  color: var(--red);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .projects-preview {
@@ -1601,10 +1635,12 @@ h2 {
 .project-card {
   display: block;
   min-width: 0;
-  background: var(--ink);
-  color: #fff;
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--border);
   overflow: hidden;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 2px 0 rgb(26 23 20 / 0.06);
 }
 
 .project-card__image {
@@ -1616,7 +1652,7 @@ h2 {
 .project-card span {
   display: block;
   padding: 18px 20px;
-  color: #fff;
+  color: var(--ink);
   font-weight: 900;
 }
 
@@ -1627,45 +1663,68 @@ h2 {
 
 .why-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
-  gap: 64px;
-  align-items: start;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
 }
 
-.why-intro {
-  position: sticky;
-  top: 110px;
+.why-media {
+  position: relative;
+  border: 1px solid rgb(255 250 242 / 0.16);
+  background: rgb(255 250 242 / 0.06);
+  box-shadow: 14px 14px 0 rgb(200 16 46 / 0.42);
 }
 
-.why-intro .section-kicker,
-.why-intro h2 {
+.why-media .photo {
+  min-height: 520px;
+}
+
+.why-media span {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  display: inline-block;
+  background: rgb(26 23 20 / 0.86);
+  color: rgb(255 250 242 / 0.72);
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.why-content .section-kicker,
+.why-content h2 {
   color: #fff;
 }
 
-.why-intro p {
-  margin: 24px 0 30px;
+.why-content > p {
+  margin: 24px 0 0;
   color: rgb(255 250 242 / 0.72);
+  line-height: 1.75;
 }
 
-.why-card-grid {
-  margin-top: 0;
-  grid-template-columns: repeat(2, 1fr);
+.why-proof-list {
+  margin: 34px 0;
+  border-top: 1px solid rgb(255 250 242 / 0.16);
 }
 
-.why-card {
-  min-height: 214px;
-  padding: 28px;
-  background: rgb(255 250 242 / 0.07);
-  border-color: rgb(255 250 242 / 0.16);
+.why-proof-list div {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgb(255 250 242 / 0.16);
 }
 
-.why-card h3 {
-  margin-top: 0;
+.why-proof-list strong {
   color: #fff;
+  font-size: 17px;
 }
 
-.why-card p {
+.why-proof-list span {
   color: rgb(255 250 242 / 0.72);
+  line-height: 1.7;
 }
 
 .about-preview {
@@ -1860,7 +1919,7 @@ h2 {
   .why-grid,
   .section-heading--split,
   .project-preview-grid,
-  .service-preview-grid,
+  .service-preview-layout,
   .testimonial-grid,
   .footer-grid,
   .project-paths__grid,
@@ -1897,12 +1956,8 @@ h2 {
     border-bottom: 0;
   }
 
-  .why-intro {
-    position: static;
-  }
-
-  .why-card-grid {
-    grid-template-columns: 1fr;
+  .service-preview-panel {
+    grid-template-rows: auto auto;
   }
 
   .final-cta__inner {
@@ -2022,7 +2077,6 @@ h2 {
   }
 
   .service-card,
-  .why-card,
   .testimonial-card {
     padding: 26px;
   }

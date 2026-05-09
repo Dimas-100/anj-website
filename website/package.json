@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "python -m http.server 5173",
-    "start": "python -m http.server 5173"
+    "dev": "python -m http.server 5173 --directory ..",
+    "start": "python -m http.server 5173 --directory .."
   }
 }
