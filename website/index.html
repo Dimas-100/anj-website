@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ANJ Construction Inc. provides residential and commercial masonry, brick, block, stonework, repairs, retaining walls, fireplaces and exterior masonry work across Georgia." />
   <title>ANJ Construction Inc. - Residential &amp; Commercial Masonry</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/branding/anj-mark-square.svg" />
   <link rel="stylesheet" href="styles.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ANJ Construction Inc." />
+  <meta property="og:title" content="ANJ Construction Inc. - Residential &amp; Commercial Masonry" />
+  <meta property="og:description" content="Premium brickwork and masonry solutions for homes and businesses across Georgia. Built with skill, precision and materials that stand the test of time." />
+  <meta property="og:url" content="https://anjconstructioninc.com/" />
+  <meta property="og:image" content="https://anjconstructioninc.com/assets/img/apartment-savanah.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ANJ Construction Inc." />
+  <meta name="twitter:description" content="Residential and commercial masonry across Georgia. Brick, block, stone, restoration and chimneys." />
+  <meta name="twitter:image" content="https://anjconstructioninc.com/assets/img/apartment-savanah.jpg" />
 </head>
-<body>
+<body class="home-page">
   <header class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__brand" aria-label="ANJ Construction Inc. home">
@@ -20,13 +31,13 @@
         <a href="services.html">Services</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
-        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </nav>
 
       <div class="nav__actions">
+        <a href="contact.html" class="btn btn--primary nav__cta">Free Quote</a>
         <a href="tel:+17709000163" class="nav__phone">(770) 900-0163</a>
-        <a href="contact.html" class="btn btn--primary nav__cta">Request Quote</a>
       </div>
 
       <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
@@ -40,264 +51,167 @@
   <main>
     <section id="home" class="hero hero--home">
       <div class="hero__shade"></div>
-      <div class="container hero__grid">
+      <div class="hero__masonry-lines" aria-hidden="true"></div>
+      <div class="container hero__grid hero__grid--centered">
         <div class="hero__copy">
-          <p class="eyebrow">Residential and commercial masonry</p>
-          <h1>Expert masonry. Strong foundations. Lasting results.</h1>
+          <p class="eyebrow">Expert craftsmanship. Timeless results.</p>
+          <h1>Expert brick-laying, built <span>to last.</span></h1>
           <p class="hero__body">
-            ANJ Construction Inc. helps homeowners, builders, property managers and businesses complete durable brick, block and stone projects with clean workmanship and dependable communication across Georgia.
+            Premium brickwork and masonry solutions for homes and businesses across Georgia. Built with skill, precision, and materials that stand the test of time.
           </p>
           <div class="hero__actions">
-            <a href="contact.html" class="btn btn--primary">Request Free Quote</a>
-            <a href="projects.html" class="btn btn--outline-light">View Our Work</a>
+            <a href="contact.html" class="btn btn--primary">Get Your Free Quote <span aria-hidden="true">-></span></a>
+            <a href="projects.html" class="btn btn--outline-light">View Our Work <span aria-hidden="true">-></span></a>
           </div>
         </div>
-
-        <aside class="hero__panel" aria-label="ANJ Construction Inc. project strengths">
-          <span>Built for</span>
-          <strong>Durability</strong>
-          <p>Brick, block, stone, fireplaces, repairs, retaining walls and new construction masonry.</p>
-        </aside>
       </div>
     </section>
 
-    <section class="stats-band reveal" aria-label="ANJ Construction Inc. trust metrics">
-      <div class="container stats-grid">
-        <article class="stat-card">
-          <strong>2015</strong>
-          <span>Serving clients since</span>
-        </article>
-        <article class="stat-card">
+    <section class="home-metrics" aria-label="ANJ Construction trust metrics">
+      <div class="container home-metrics__grid">
+        <article>
           <strong>100+</strong>
-          <span>Projects completed</span>
+          <span>Projects Completed</span>
         </article>
-        <article class="stat-card">
-          <strong>4</strong>
-          <span>Core masonry services</span>
+        <article>
+          <strong>2015</strong>
+          <span>Serving Georgia Since</span>
         </article>
-        <article class="stat-card">
+        <article>
+          <strong>6</strong>
+          <span>Masonry Specialties</span>
+        </article>
+        <article>
           <strong>GA</strong>
-          <span>Georgia service area</span>
+          <span>Local Service Area</span>
         </article>
       </div>
     </section>
 
-    <section id="services" class="section services-preview reveal">
+    <section id="services" class="home-services reveal">
       <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Services</p>
-          <h2>Masonry services for homes, businesses and builders.</h2>
-          <p>A focused look at the work customers request most often. The full services page can carry deeper details, materials and project examples.</p>
-        </div>
-
-        <div class="service-preview-layout">
-          <aside class="service-preview-panel" aria-label="ANJ masonry service focus">
-            <div class="photo photo--block" role="img" aria-label="Masonry block work in progress"></div>
-            <div>
-              <span>Built around the scope</span>
-              <p>Brick, stone, block and restoration work are planned around the property, materials and long-term durability.</p>
-            </div>
-          </aside>
-
-          <div class="service-preview-list">
-            <article class="service-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <rect x="3" y="5" width="18" height="14" rx="1.5"></rect>
-                  <path d="M3 10h18M3 15h18M8 5v5M16 5v5M12 10v5M8 15v4M16 15v4"></path>
-                </svg>
-              </span>
-              <div>
-                <h3>Brick &amp; Block Masonry</h3>
-                <p>Structural block, brick walls, veneers, repairs and clean masonry installations built to last.</p>
-              </div>
-            </article>
-            <article class="service-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M6 5.5 12 3l6 2.5 2 6-3 6.5-7 3-6-3-2-6.5Z"></path>
-                  <path d="m6 5.5 4 5.5-6 7M12 3l-2 8 7 7M18 5.5l-1 12.5M10 11h7"></path>
-                </svg>
-              </span>
-              <div>
-                <h3>Stone Veneer &amp; Stonework</h3>
-                <p>Natural and manufactured stonework for fireplaces, facades, columns, patios and accents.</p>
-              </div>
-            </article>
-            <article class="service-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M8 21h8"></path>
-                  <path d="M7 21V9h10v12"></path>
-                  <path d="M9 9V4h6v5"></path>
-                  <path d="M10 18c0-2 2-3 2-5 1.8 1.2 3 2.7 3 4.4A3 3 0 0 1 9 18Z"></path>
-                </svg>
-              </span>
-              <div>
-                <h3>Chimneys &amp; Outdoor Features</h3>
-                <p>Chimneys, patios, steps, outdoor kitchens and exterior masonry features with strong structure and sharp finish work.</p>
-              </div>
-            </article>
-            <article class="service-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M4 18h16"></path>
-                  <path d="M5 18V8l7-3 7 3v10"></path>
-                  <path d="M5 11h14M5 14h14M9 7v4M15 7v4M12 11v3M8 14v4M16 14v4"></path>
-                </svg>
-              </span>
-              <div>
-                <h3>Restoration &amp; Repairs</h3>
-                <p>Repointing, mortar matching, brick replacement and masonry repairs planned around long-term stability.</p>
-              </div>
-            </article>
-            <article class="service-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M4 21V5l8-2 8 2v16"></path>
-                  <path d="M9 21v-5h6v5"></path>
-                  <path d="M8 8h2M14 8h2M8 12h2M14 12h2"></path>
-                </svg>
-              </span>
-              <div>
-                <h3>Commercial Masonry</h3>
-                <p>Masonry support for storefronts, commercial exteriors, property improvements and build-outs.</p>
-              </div>
-            </article>
-            <article class="service-card">
-              <span class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path d="M3 21h18"></path>
-                  <path d="M5 21V9l7-5 7 5v12"></path>
-                  <path d="M9 21v-6h6v6"></path>
-                  <path d="M8 11h8"></path>
-                </svg>
-              </span>
-              <div>
-                <h3>Additions &amp; Exterior Masonry</h3>
-                <p>Brick, block and stone packages for additions, facades and exterior improvements that need reliable execution.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="section-action">
-          <a href="services.html" class="btn btn--dark">View More</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" class="section projects-preview reveal">
-      <div class="container">
-        <div class="section-heading section-heading--split">
+        <div class="home-section-head home-section-head--split">
           <div>
-            <p class="section-kicker">Recent work</p>
-            <h2>Our masonry projects.</h2>
+            <p class="section-kicker">Our Services</p>
+            <h2>Six masonry specialties.<br>One standard.</h2>
           </div>
-          <p>Preview completed work across residential and commercial properties. The gallery page can hold the full project library.</p>
+          <p>From new construction to repairs and custom features, our technicians service indoor, exterior, decorative, and long-lasting value for every property.</p>
         </div>
 
-        <div class="project-preview-grid">
-          <article class="project-card">
-            <div class="project-card__image photo--apartment-savannah" role="img" aria-label="Apartment masonry work in Savannah, Georgia"></div>
-            <span>Savannah, GA</span>
+        <div class="home-service-grid">
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 19h18"></path><path d="M6 19v-6l5-3v9"></path><path d="M13 19V5l5 3v11"></path><path d="M8 15h2M15 10h2M15 14h2"></path></svg></span>
+            <h3>Brick Laying</h3>
+            <small></small>
+            <p>Expert brick laying for new construction, additions, and custom projects.</p>
           </article>
-          <article class="project-card">
-            <div class="project-card__image photo--chimney-winder" role="img" aria-label="Chimney masonry work in Winder, Georgia"></div>
-            <span>Winder, GA</span>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v13H4z"></path><path d="M4 10h16M4 14h16"></path><path d="M9 6v4M15 10v4M9 14v5"></path></svg></span>
+            <h3>Brick Veneer</h3>
+            <small></small>
+            <p>Beautiful brick veneers that add warmth, character, and curb appeal.</p>
           </article>
-          <article class="project-card">
-            <div class="project-card__image gallery-photo--wall" role="img" aria-label="Retaining wall masonry"></div>
-            <span>Metro Atlanta, GA</span>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h16"></path><path d="M6 16h12M7 13h10M8 10h8M10 7h4"></path><path d="M12 4v3"></path></svg></span>
+            <h3>Retaining Walls</h3>
+            <small></small>
+            <p>Strong, attractive retaining walls designed to handle slope and soil with timeless style.</p>
           </article>
-          <article class="project-card">
-            <div class="project-card__image photo--commercial" role="img" aria-label="Commercial masonry facade"></div>
-            <span>Savannah, GA</span>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21V9h10v12"></path><path d="M9 9V4h6v5"></path><path d="M10 18c0-2 2-3 2-5 2 1.2 3 2.7 3 4.4A3 3 0 0 1 9 18Z"></path></svg></span>
+            <h3>Chimneys &amp; Fireplaces</h3>
+            <small></small>
+            <p>Custom brick fireplaces and chimneys built for warmth and durability.</p>
           </article>
-          <article class="project-card">
-            <div class="project-card__image photo--restoration" role="img" aria-label="Residential masonry repair"></div>
-            <span>Gwinnett County, GA</span>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h10"></path><path d="M5 19V9l6-4 6 4v3"></path><path d="m14 19 6-6"></path><path d="m17 12 3 3"></path><path d="M8 13h4"></path></svg></span>
+            <h3>Brick Repair &amp; Restoration</h3>
+            <small></small>
+            <p>Expert brick repair and restoration to preserve the beauty and integrity of your home or building.</p>
           </article>
-          <article class="project-card">
-            <div class="project-card__image gallery-photo--walkway" role="img" aria-label="Outdoor patio stonework"></div>
-            <span>Barrow County, GA</span>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4h9v17"></path><path d="M14 9h5v12"></path><path d="M8 8h3M8 12h3M8 16h3M16 13h1M16 17h1"></path></svg></span>
+            <h3>Commercial Brickwork</h3>
+            <small></small>
+            <p>Reliable brickwork solutions for commercial buildings, walls, and facades.</p>
           </article>
-        </div>
-
-        <div class="section-action">
-          <a href="projects.html" class="btn btn--dark">View Full Gallery</a>
         </div>
       </div>
     </section>
 
-    <section class="section why-section reveal">
-      <div class="container why-grid">
-        <div class="why-media">
-          <div class="photo photo--about" role="img" aria-label="ANJ masonry crew reviewing work"></div>
-          <span>Project photo placeholder</span>
-        </div>
-
-        <div class="why-content">
-          <p class="section-kicker">Why choose us</p>
-          <h2>Careful masonry work starts before the first brick is laid.</h2>
-          <p>ANJ focuses on the details that make masonry last: site prep, drainage, material matching, clean joints and steady communication from estimate through cleanup.</p>
-
-          <div class="why-proof-list">
-            <div>
-              <strong>Built for durability</strong>
-              <span>Brick, stone and block work planned around water movement, structure and long-term wear.</span>
-            </div>
-            <div>
-              <strong>Clear project communication</strong>
-              <span>Straightforward scheduling, scope review and jobsite updates for homeowners, builders and businesses.</span>
-            </div>
-            <div>
-              <strong>Residential and commercial experience</strong>
-              <span>Chimneys, patios, facades, repairs, additions and commercial masonry handled with the same standard.</span>
-            </div>
-          </div>
-
-          <a href="contact.html" class="btn btn--primary">Request Free Estimate</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews" class="section testimonials-section reveal">
+    <section id="projects" class="home-projects reveal">
       <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Reviews</p>
-          <h2>What customers say.</h2>
-          <p class="content-note">Placeholder reviews are shown for layout only. Replace these cards with real customer reviews before publishing.</p>
-        </div>
+        <div class="home-projects__grid">
+          <div class="home-projects__intro">
+            <p class="section-kicker">Featured Projects</p>
+            <h2>Recent work across Georgia.</h2>
+            <p>Explore a few of our recent brickwork projects across residential and commercial properties.</p>
+            <a href="projects.html">View All Projects <span aria-hidden="true">-></span></a>
+          </div>
 
-        <!-- Placeholder testimonials: activate this section once real reviews are available. -->
-        <div class="testimonial-grid">
-          <article class="testimonial-card">
-            <p>"ANJ Construction did excellent work on our brick repair. Professional, fast, and high quality."</p>
-            <span>Homeowner Review</span>
+          <article class="home-project-card">
+            <div class="home-project-card__image gallery-photo--walkway" role="img" aria-label="Brick walkway and landscaping project"></div>
+            <div class="home-project-card__copy">
+              <small>Residential Brick Wall</small>
+              <strong>Lawrenceville, GA</strong>
+            </div>
           </article>
-          <article class="testimonial-card">
-            <p>"The team was reliable and the finished stonework looked amazing."</p>
-            <span>Stonework Project</span>
+          <article class="home-project-card">
+            <div class="home-project-card__image gallery-photo--home" role="img" aria-label="Residential brick exterior project"></div>
+            <div class="home-project-card__copy">
+              <small>Traditional Brick Home</small>
+              <strong>Gwinnett County, GA</strong>
+            </div>
           </article>
-          <article class="testimonial-card">
-            <p>"Great communication and craftsmanship from start to finish."</p>
-            <span>Commercial Client</span>
+          <article class="home-project-card">
+            <div class="home-project-card__image photo--chimney-winder" role="img" aria-label="Outdoor brick fireplace project"></div>
+            <div class="home-project-card__copy">
+              <small>Outdoor Brick Fireplace</small>
+              <strong>Lawrenceville, GA</strong>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="final-cta reveal">
-      <div class="container final-cta__inner">
-        <div>
-          <p class="section-kicker">Request a quote</p>
-          <h2>Ready to start your next masonry project?</h2>
-          <p>Contact ANJ Construction today for a free estimate on residential or commercial masonry work.</p>
+    <section id="why-choose-us" class="home-difference reveal">
+      <div class="container">
+        <div class="home-section-head home-section-head--center">
+          <p class="section-kicker">Why Choose ANJ Construction?</p>
+          <h2>The difference is in the <span>details.</span></h2>
         </div>
-        <div class="final-cta__actions">
-          <a href="contact.html" class="btn btn--primary">Request Free Quote</a>
-          <a href="tel:+17709000163" class="btn btn--outline-light">Call Now</a>
+
+        <div class="difference-grid">
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"></path><path d="M8.5 14.2 7 22l5-3 5 3-1.5-7.8"></path></svg></span>
+            <h3>Skilled Craftsmanship</h3>
+            <p>Experienced masons who take pride in every line, joint, and finish.</p>
+          </article>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z"></path><path d="m8.5 12 2.2 2.2L15.8 9"></path></svg></span>
+            <h3>Quality Materials</h3>
+            <p>We use premium brick and masonry materials built for durability and beauty.</p>
+          </article>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v14H4z"></path><path d="M8 6V4h8v2"></path><path d="M8 11h8M8 15h5"></path></svg></span>
+            <h3>Honest Communication</h3>
+            <p>Clear estimates, timelines, and updates every step of the way.</p>
+          </article>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16"></path><path d="M6 8h12"></path><path d="M7 16h10"></path><path d="M12 3v18"></path></svg></span>
+            <h3>Clean &amp; Safe Job Sites</h3>
+            <p>Respect for your home and property with clean, organized work areas.</p>
+          </article>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4h9v17"></path><path d="M14 9h5v12"></path><path d="M8 8h3M8 12h3M8 16h3"></path></svg></span>
+            <h3>Residential &amp; Commercial</h3>
+            <p>Quality masonry for homeowners, builders, property managers, and businesses.</p>
+          </article>
+          <article>
+            <span class="home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 7v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z"></path><path d="M9 12h6"></path><path d="M12 9v6"></path></svg></span>
+            <h3>Reliable Results</h3>
+            <p>Brickwork built right with attention to detail and built to last.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -311,12 +225,9 @@
       </div>
 
       <nav aria-label="Quick links">
-        <h2>Quick Links</h2>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
+        <h2>Company</h2>
         <a href="about.html">About</a>
-        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
       </nav>
 
@@ -330,14 +241,28 @@
 
       <div class="footer-contact">
         <h2>Contact</h2>
-        <p><a href="tel:+17709000163">(770) 900-0163</a></p>
-        <p><a href="mailto:lidyflores1981@icloud.com">lidyflores1981@icloud.com</a></p>
-        <p>Service area: Winder, Lawrenceville, Metro Atlanta, Savannah and surrounding Georgia communities</p>
+        <p>
+          <span class="footer-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9Z"></path></svg>
+          </span>
+          <a href="tel:+17709000163">(770) 900-0163</a>
+        </p>
+        <p>
+          <span class="footer-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"></path><path d="m22 7-10 6L2 7"></path></svg>
+          </span>
+          <a href="mailto:lidyflores1981@icloud.com">lidyflores1981@icloud.com</a>
+        </p>
+        <p>
+          <span class="footer-contact__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </span>
+          <span>Service area: Winder, Lawrenceville, Metro Atlanta, Savannah and surrounding Georgia communities</span>
+        </p>
       </div>
     </div>
     <div class="container footer__bottom">
       <p>&copy; <span id="year"></span> ANJ Construction Inc. All rights reserved.</p>
-      <p>Licensed and insured placeholder - confirm before publishing.</p>
     </div>
   </footer>
 

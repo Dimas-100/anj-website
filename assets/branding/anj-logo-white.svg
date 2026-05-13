@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <defs>
-    
-  </defs>
-  <text class="w-anj" x="400" y="240" text-anchor="middle">ANJ</text>
-  <text class="w-ci" x="400" y="310" text-anchor="middle">CONSTRUCTION INC.</text>
-  <line x1="240" y1="345" x2="560" y2="345" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1"></line>
-  <text class="w-resi" x="400" y="385" text-anchor="middle">RESIDENTIAL &amp; COMMERCIAL</text>
-  <text class="w-tag" x="400" y="430" text-anchor="middle">BRICK · STONE · BLOCK</text>
+  <text x="400" y="260" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="180" font-weight="700" letter-spacing="-4">ANJ</text>
+  <text x="400" y="320" text-anchor="middle" fill="#ffffff" font-family="'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="800" letter-spacing="3">CONSTRUCTION INC.</text>
+  <line x1="240" y1="355" x2="560" y2="355" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"></line>
+  <text x="400" y="400" text-anchor="middle" fill="#ffffff" fill-opacity="0.78" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="4">RESIDENTIAL &amp; COMMERCIAL</text>
+  <text x="400" y="445" text-anchor="middle" fill="#c8102e" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5">BRICK &#183; STONE &#183; BLOCK</text>
 </svg>

@@ -1,5 +1,7 @@
 const navToggle = document.querySelector(".nav__toggle");
 const navLinks = document.getElementById("nav-links");
+const nav = document.querySelector(".nav");
+const backTop = document.querySelector(".back-top");
 
 if (navToggle && navLinks) {
   navToggle.addEventListener("click", () => {
@@ -22,6 +24,12 @@ if (navToggle && navLinks) {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+function updateChrome() {
+  const scrolled = window.scrollY > 18;
+  if (nav) nav.classList.toggle("is-scrolled", scrolled);
+  if (backTop) backTop.classList.toggle("is-visible", window.scrollY > 520);
+}
+
 const filterButtons = document.querySelectorAll(".filter");
 const projects = document.querySelectorAll(".project");
 
@@ -32,7 +40,7 @@ filterButtons.forEach((button) => {
     filterButtons.forEach((item) => {
       const active = item === button;
       item.classList.toggle("is-active", active);
-      item.setAttribute("aria-selected", String(active));
+      item.setAttribute("aria-pressed", String(active));
     });
 
     projects.forEach((project) => {
@@ -61,8 +69,16 @@ scopeButtons.forEach((button) => {
   });
 });
 
+document.querySelectorAll(".section, .contact, .service-detail-section, .gallery-section, .company-detail, .values-section, .capabilities").forEach((element) => {
+  element.classList.add("reveal");
+});
+
 const revealEls = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (reduceMotion) {
+  revealEls.forEach((element) => element.classList.add("is-visible"));
+} else if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -72,7 +88,7 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    { threshold: 0.14 }
+    { rootMargin: "-8% 0px -12%", threshold: 0.16 }
   );
   revealEls.forEach((element) => revealObserver.observe(element));
 } else {
@@ -96,7 +112,17 @@ function updateActiveNav() {
 }
 
 window.addEventListener("scroll", updateActiveNav, { passive: true });
+window.addEventListener("scroll", updateChrome, { passive: true });
 updateActiveNav();
+updateChrome();
+
+document.querySelectorAll(".project-card, .service-card, .quote-path__grid article").forEach((card) => {
+  card.addEventListener("pointermove", (event) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+    card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+  });
+});
 
 const form = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
