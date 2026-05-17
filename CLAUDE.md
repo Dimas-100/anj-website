@@ -36,6 +36,8 @@ Static multi-page site. No framework, no bundler — browsers load `.html`, `sty
 
 **CSS layering:** `website/styles.css` is ~4,000 lines with three override blocks (lines 1, ~2400, ~3137, ~3467) layered by source order. Don't unpick the older blocks — append new rules at the bottom so they win by cascade order. A `Design polish overrides` block at the end of the file groups the most recent additions; add new tweaks there.
 
+**Theme class:** every `<body>` carries `class="anj-theme"`. The block starting at line ~3467 (`.anj-theme { ... }` and the many `.anj-theme <selector>` rules below it) defines the site-wide design tokens — cream background, dark navbar, Georgia serif headlines, "—"-prefix kicker style, italic-red emphasis on `h1`/`h2` `<span>` children. If you add a new page, set `<body class="anj-theme">` so the design system applies.
+
 ## Deployment
 
 Vercel config is at repo root in `vercel.json`. It rewrites clean URLs (`/`, `/about`, `/services`, etc.) and the `.html` variants to their files under `/website/`. CSS and JS get the same passthrough. Two important consequences:
