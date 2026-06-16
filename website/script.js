@@ -1,4 +1,4 @@
-// ANJ Construction — single-page interactions
+// ANJ Construction single-page interactions
 (function () {
   "use strict";
 
@@ -95,7 +95,7 @@
           headers: { Accept: "application/json" },
         });
         if (!response.ok) throw new Error("Submission failed");
-        status.textContent = "Thank you — we'll be in touch within a business day.";
+        status.textContent = "Thank you! We'll be in touch within a business day.";
         form.reset();
       } catch (err) {
         status.classList.add("error");
