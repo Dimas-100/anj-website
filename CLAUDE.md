@@ -40,11 +40,14 @@ Static multi-page site. No framework, no bundler — browsers load `.html`, `sty
 
 ## Deployment
 
-Vercel config is at repo root in `vercel.json`. It rewrites clean URLs (`/`, `/about`, `/services`, etc.) and the `.html` variants to their files under `/website/`. CSS and JS get the same passthrough. Two important consequences:
+**Live:** the site is deployed at `https://anjconstruction.co` via the Vercel project `anj-website` (team `diazdimas042-8048's projects`), connected to GitHub `Dimas-100/anj-website`. **Every push to `main` auto-deploys to production.** The Vercel project's Root Directory is the repo root (NOT `website/`) — that's required so `vercel.json` is picked up and the `/website/...` rewrite destinations resolve.
+
+Vercel config is at repo root in `vercel.json`. It rewrites clean URLs (`/`, `/about`, `/services`, etc.) and the `.html` variants to their files under `/website/`. CSS and JS get the same passthrough. Important consequences:
 
 - After deploy, visit `https://<domain>/` not `https://<domain>/website/`.
 - Internal links in HTML still use `*.html` (e.g. `<a href="about.html">`) — Vercel resolves them via the rewrite. Don't strip `.html` from links; that would break local dev.
 - If you add a new page, add **two rewrites** in `vercel.json` for it (clean URL + `.html` variant).
+- **Do NOT add `"cleanUrls": true` to `vercel.json`.** It strips `.html` from rewrite *destinations*, so `/` → `/website/index.html` (and every page route) returns 404 while non-html rewrites like `/styles.css` still work. It was removed for exactly this reason — re-adding it silently breaks the homepage.
 
 ## Editing notes
 
