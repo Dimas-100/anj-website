@@ -32,6 +32,26 @@
   var year = document.querySelector("#year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // Scroll reveal (skipped when the user prefers reduced motion)
+  var reveals = document.querySelectorAll(".reveal");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reveals.length && !reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+    );
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
   // Contact form -> Formspree (AJAX)
   var form = document.querySelector("#contact-form");
   var status = document.querySelector("#form-status");
