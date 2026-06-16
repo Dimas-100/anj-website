@@ -3,17 +3,19 @@
   "rewrites": [
     { "source": "/", "destination": "/website/index.html" },
     { "source": "/index.html", "destination": "/website/index.html" },
-    { "source": "/about", "destination": "/website/about.html" },
-    { "source": "/about.html", "destination": "/website/about.html" },
-    { "source": "/services", "destination": "/website/services.html" },
-    { "source": "/services.html", "destination": "/website/services.html" },
-    { "source": "/projects", "destination": "/website/projects.html" },
-    { "source": "/projects.html", "destination": "/website/projects.html" },
-    { "source": "/faq", "destination": "/website/faq.html" },
-    { "source": "/faq.html", "destination": "/website/faq.html" },
-    { "source": "/contact", "destination": "/website/contact.html" },
-    { "source": "/contact.html", "destination": "/website/contact.html" },
     { "source": "/styles.css", "destination": "/website/styles.css" },
     { "source": "/script.js", "destination": "/website/script.js" }
+  ],
+  "redirects": [
+    { "source": "/about", "destination": "/#about", "permanent": true },
+    { "source": "/about.html", "destination": "/#about", "permanent": true },
+    { "source": "/services", "destination": "/#services", "permanent": true },
+    { "source": "/services.html", "destination": "/#services", "permanent": true },
+    { "source": "/projects", "destination": "/#work", "permanent": true },
+    { "source": "/projects.html", "destination": "/#work", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/contact.html", "destination": "/#contact", "permanent": true },
+    { "source": "/faq", "destination": "/", "permanent": true },
+    { "source": "/faq.html", "destination": "/", "permanent": true }
   ]
 }
