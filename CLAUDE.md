@@ -48,7 +48,7 @@ Vercel config is at repo root in `vercel.json`. It rewrites clean URLs (`/`, `/a
 
 ## Editing notes
 
-- Replace placeholder domain `anjconstructioninc.com` (used in og:url / og:image / twitter:image on every page) with the real domain once chosen. Search `anjconstructioninc.com`.
+- The site domain is `anjconstruction.co` (used in og:url / og:image / twitter:image on every page; the `.com` was already taken). It still needs to be connected to the Vercel project's Domains once registered and DNS is pointed.
 - Search the codebase for `TODO` to find unresolved business-info placeholders (Formspree ID, license numbers, etc.).
 - Logo variants live in `assets/branding/`. The two `<img>`-style references previously in each nav were removed — the nav now renders the wordmark as styled HTML text spans. The SVGs in that folder were patched (the originals referenced undefined CSS classes and rendered blank); they're still available for business cards, social posts, etc.
 - "Licensed and insured" is **not** claimed anywhere on the site as of the last review. Add only after the business owner confirms valid licensing and provides documentation.
