@@ -18,6 +18,18 @@
     });
   }
 
+  // Brand wordmark -> scroll back to the very top
+  var brand = document.querySelector(".nav__brand");
+  if (brand) {
+    brand.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (links) links.classList.remove("is-open");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+      var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: rm ? "auto" : "smooth" });
+    });
+  }
+
   // Sticky-nav scrolled state
   var nav = document.querySelector(".nav");
   if (nav) {
