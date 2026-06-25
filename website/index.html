@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  (function(){
+    var d=document.documentElement;
+    d.classList.add('js');
+    try{
+      if(!sessionStorage.getItem('anjIntroSeen')){
+        d.classList.add('intro-armed');
+        if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('intro-reduced');}
+        sessionStorage.setItem('anjIntroSeen','1');
+      }
+    }catch(e){}
+    // Failsafe: if script.js never signals ready (blocked, 404, or a parse error),
+    // release the intro curtain and reveal all content so the page is never
+    // trapped behind the overlay or left with hidden reveal sections.
+    setTimeout(function(){
+      if(!window.__anjReady){
+        d.classList.add('intro-done','js-failed');
+        var o=document.querySelector('.intro'); if(o){o.classList.add('is-done');}
+      }
+    },4500);
+  })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f7f1e8" />
+  <meta name="theme-color" content="#211d18" />
   <meta name="description" content="ANJ Construction Inc. is a family-run bricklaying and masonry business serving Georgia since 2015. Brick, block, stone, retaining walls, chimneys, fireplaces, restoration and commercial masonry. Request a free quote." />
   <title>ANJ Construction Inc. · Bricklaying &amp; Masonry in Georgia</title>
   <link rel="icon" type="image/svg+xml" href="../assets/branding/anj-mark-square.svg" />
@@ -11,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="image" href="../assets/img/apartment-savanah.jpg" fetchpriority="high" />
   <link rel="canonical" href="https://www.anjconstruction.co/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ANJ Construction Inc." />
@@ -24,9 +47,21 @@
   <meta name="twitter:image" content="https://www.anjconstruction.co/assets/img/apartment-savanah.jpg" />
 </head>
 <body>
-  <header class="nav" id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- INTRO SPLASH (once per session; armed by the head gate) -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro__stage">
+      <span class="intro__mark">A</span>
+      <span class="intro__rule"></span>
+      <span class="intro__word">ANJ CONSTRUCTION</span>
+    </div>
+    <span class="intro__skip">Tap to skip</span>
+  </div>
+
+  <header class="nav nav--over" id="top">
     <div class="container nav__inner">
-      <a href="#top" class="nav__brand">
+      <a href="#home" class="nav__brand">
         <span class="nav__mark" aria-hidden="true">A</span>
         ANJ <span class="nav__brand-sub">Construction</span>
       </a>
@@ -43,32 +78,39 @@
     </div>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
     <!-- HERO -->
     <section class="hero" id="home">
-      <div class="container hero__inner">
-        <div class="hero__text">
-          <p class="eyebrow load" style="--d:.05s">Bricklaying &amp; Masonry · Georgia</p>
-          <h1 class="hero__title load" style="--d:.12s">Brickwork built <span class="accent">to last.</span></h1>
-          <p class="hero__lead load" style="--d:.2s">Brick, block, stone, and masonry repair for homes and businesses across Georgia. Crafted by a family-run team since 2015.</p>
-          <div class="hero__actions load" style="--d:.28s">
-            <a href="#contact" class="btn btn--accent btn--lg">Request a free quote</a>
-            <a href="#work" class="link-arrow">See our work <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <figure class="hero__media load" style="--d:.18s">
-          <img src="../assets/img/apartment-savanah.jpg" alt="Commercial brick apartment building constructed by ANJ Construction in Savannah, Georgia" />
-          <figcaption class="hero__tag">Commercial brick build · Savannah, GA</figcaption>
-        </figure>
+      <div class="hero__bg">
+        <img src="../assets/img/apartment-savanah.jpg" alt="" aria-hidden="true" fetchpriority="high" />
       </div>
-      <div class="container hero__trust load" style="--d:.36s">
-        <span>Family-run since 2015</span>
-        <span>Residential &amp; Commercial</span>
-        <span>Serving all of Georgia</span>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <span class="hero__rule" aria-hidden="true"></span>
+        <p class="hero__eyebrow">Bricklaying &amp; Masonry · Georgia</p>
+        <h1 class="hero__title">
+          <span class="word"><span style="animation-delay:.05s">Brickwork</span></span>
+          <span class="word"><span style="animation-delay:.18s">built</span></span><br>
+          <span class="word"><span class="accent" style="animation-delay:.32s">to last.</span></span>
+        </h1>
+        <p class="hero__lead">Brick, block, stone, and masonry repair for homes and businesses across Georgia. Crafted by a family-run team since 2015.</p>
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--accent btn--lg">Request a free quote</a>
+          <a href="#work" class="link-arrow link-arrow--light">See our work <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 
-    <!-- WHO WE ARE -->
+    <!-- STATS BAND -->
+    <section class="statband" aria-label="Company facts">
+      <div class="container statband__inner">
+        <div class="statband__item"><span class="statband__num">2015</span><span class="statband__label">Established</span></div>
+        <div class="statband__item"><span class="statband__num">All Georgia</span><span class="statband__label">Service area</span></div>
+        <div class="statband__item"><span class="statband__num">Res + Com</span><span class="statband__label">Project types</span></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
     <section class="section reveal" id="about">
       <div class="container about__inner">
         <div class="section__head">
@@ -76,79 +118,88 @@
           <h2 class="section__title">A family-run bricklaying company built on trust.</h2>
           <p class="section__lead">ANJ Construction has laid brick, block, and stone across Georgia since 2015. Clean lines, honest pricing, and craftsmanship that holds up for decades. We take on both residential and commercial work, and treat every wall like it carries our name.</p>
         </div>
-        <ul class="stats">
-          <li><span class="stats__num">2015</span><span class="stats__label">Established</span></li>
-          <li><span class="stats__num">All&nbsp;Georgia</span><span class="stats__label">Service area</span></li>
-          <li><span class="stats__num">Res&nbsp;+&nbsp;Com</span><span class="stats__label">Project types</span></li>
-        </ul>
+        <figure class="about__media">
+          <img src="../assets/img/chimney-winder.jpg" alt="Floor-to-ceiling stone veneer fireplace built by ANJ Construction in Winder, Georgia" loading="lazy" />
+        </figure>
       </div>
     </section>
 
-    <!-- WHAT WE OFFER -->
-    <section class="section section--alt reveal" id="services">
-      <div class="container">
-        <div class="section__head">
+    <!-- SERVICES -->
+    <section class="section section--alt" id="services">
+      <div class="container svc__layout">
+        <div class="svc__intro">
           <p class="eyebrow">What we offer</p>
-          <h2 class="section__title">Masonry services, done right.</h2>
+          <h2 class="section__title">Masonry services, done <span class="accent">right.</span></h2>
+          <p class="section__lead">Brick, block, and stone work for homes and businesses, built on craftsmanship that holds up for decades.</p>
+          <a class="btn btn--accent" href="#contact">Request a quote</a>
         </div>
-        <ul class="services">
-          <li class="service">
-            <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 12h18M9 6v6M15 6v6M6 12v6M12 12v6M18 12v6"/></svg></span>
-            <h3>Brickwork</h3>
-            <p>Brick laying, veneer, and block. Straight courses, clean joints.</p>
+        <ul class="svc__list">
+          <li class="svc__item reveal" data-delay="0">
+            <div class="svc__text"><h3>Brickwork</h3><p>Brick laying, veneer, and block. Straight courses, clean joints.</p></div>
+            <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </li>
-          <li class="service">
-            <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 10h6M9 5v5M9 10v9M9 14h12M15 10h6M15 10V5"/></svg></span>
-            <h3>Stone Veneer</h3>
-            <p>Natural &amp; manufactured stone for facades and features.</p>
+          <li class="svc__item reveal" data-delay="70">
+            <div class="svc__text"><h3>Stone Veneer</h3><p>Natural and manufactured stone for facades and features.</p></div>
+            <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </li>
-          <li class="service">
-            <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><rect x="5" y="7" width="14" height="10" rx="1"/><path d="M5 12h14M12 7v5M9 12v5M15 12v5"/></svg></span>
-            <h3>Retaining Walls</h3>
-            <p>Structural &amp; decorative walls that hold their ground.</p>
+          <li class="svc__item reveal" data-delay="140">
+            <div class="svc__text"><h3>Retaining Walls</h3><p>Structural and decorative walls that hold their ground.</p></div>
+            <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </li>
-          <li class="service">
-            <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 3.5 4.5 6 4.5 8.5a4.5 4.5 0 0 1-9 0c0-1.6.7-2.8 1.8-3.9C10.5 9 12 6.5 12 3Z"/></svg></span>
-            <h3>Chimneys &amp; Fireplaces</h3>
-            <p>Custom builds, rebuilds, and repairs.</p>
+          <li class="svc__item reveal" data-delay="210">
+            <div class="svc__text"><h3>Chimneys &amp; Fireplaces</h3><p>Custom builds, rebuilds, and repairs.</p></div>
+            <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </li>
-          <li class="service">
-            <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4l10 2.2L6.2 13z"/><path d="M11.5 11.5l4.5 4.5M15 15l4 4"/></svg></span>
-            <h3>Restoration</h3>
-            <p>Repair &amp; tuckpointing that matches the original.</p>
+          <li class="svc__item reveal" data-delay="280">
+            <div class="svc__text"><h3>Restoration</h3><p>Repair and tuckpointing that matches the original.</p></div>
+            <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </li>
-          <li class="service">
-            <span class="service__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15"/></svg></span>
-            <h3>Commercial Masonry</h3>
-            <p>Facades and commercial-scale stone &amp; brickwork.</p>
+          <li class="svc__item reveal" data-delay="350">
+            <div class="svc__text"><h3>Commercial Masonry</h3><p>Facades and commercial-scale stone and brickwork.</p></div>
+            <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- OUR WORK -->
-    <section class="section reveal" id="work">
+    <!-- WORK -->
+    <section class="section" id="work">
       <div class="container">
-        <div class="section__head">
-          <p class="eyebrow">Our work</p>
-          <h2 class="section__title">Recent projects.</h2>
+        <div class="section__head section__head--center reveal">
+          <p class="eyebrow eyebrow--center">Our work</p>
+          <h2 class="section__title">Recent <span class="accent">projects.</span></h2>
+          <p class="section__lead">Brick, stone, and masonry work from across Georgia.</p>
         </div>
-        <div class="gallery">
-          <figure class="gallery__item gallery__item--feature">
-            <img src="../assets/img/apartment-savanah.jpg" alt="Multi-unit commercial brick building under construction in Savannah, Georgia" />
-            <figcaption><span class="gallery__place">Savannah, GA</span><span class="gallery__name">Commercial Brick Build</span></figcaption>
-          </figure>
+        <div class="cz reveal" data-carousel data-start="0">
+          <div class="cz__viewport">
+            <div class="cz__track">
+              <article class="cz__slide">
+                <div class="cz__media"><img src="../assets/img/apartment-savanah.jpg" alt="Commercial brick apartment building built by ANJ Construction in Savannah, Georgia" width="1200" height="800" loading="lazy" /></div>
+                <div class="cz__cap"><h3 class="cz__title">Commercial Brick Build</h3><span class="cz__tag">Savannah, GA</span><p class="cz__desc">A multi-unit commercial brick building, laid course by course from the ground up.</p></div>
+              </article>
+              <article class="cz__slide">
+                <div class="cz__media"><img src="../assets/img/fireplace-winder.jpg" alt="Floor-to-ceiling stone veneer fireplace built by ANJ Construction in Winder, Georgia" width="1200" height="800" loading="lazy" /></div>
+                <div class="cz__cap"><h3 class="cz__title">Stone Fireplace</h3><span class="cz__tag">Winder, GA</span><p class="cz__desc">A floor-to-ceiling stone veneer fireplace with a reclaimed-wood mantel and stone hearth.</p></div>
+              </article>
+            </div>
+            <button class="cz__arrow cz__prev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="cz__arrow cz__next" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+          <div class="cz__dots" aria-label="Choose a project">
+            <button class="cz__dot" type="button" aria-label="Commercial Brick Build"></button>
+            <button class="cz__dot" type="button" aria-label="Stone Fireplace"></button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CLOSING CTA -->
     <section class="section section--dark reveal" id="contact">
       <div class="container contact__inner">
         <div class="contact__intro">
           <p class="eyebrow eyebrow--light">Get in touch</p>
-          <h2 class="section__title">Request a free quote.</h2>
-          <p class="section__lead section__lead--light">Tell us about your project and we'll get back to you. We serve Winder, Lawrenceville, Metro Atlanta, Savannah, and the surrounding Georgia communities.</p>
+          <h2 class="section__title">Have a project <span class="accent">in mind?</span></h2>
+          <p class="section__lead section__lead--light">Tell us about it and we'll get back to you. We serve Winder, Lawrenceville, Metro Atlanta, Savannah, and the surrounding Georgia communities.</p>
           <p class="contact__assurance"><span aria-hidden="true">✓</span> We reply within one business day.</p>
         </div>
         <form id="contact-form" class="form" action="https://formspree.io/f/xdavjdyj" method="POST" novalidate>
@@ -167,13 +218,29 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="nav__mark" aria-hidden="true">A</span>
-        <span>ANJ Construction Inc.</span>
+    <div class="container">
+      <div class="footer__cols">
+        <div class="footer__col footer__col--brand">
+          <a href="#top" class="footer__brand"><span class="nav__mark" aria-hidden="true">A</span><span>ANJ Construction</span></a>
+          <p class="footer__blurb">Family-run bricklaying and masonry in Georgia: brick, block, stone, retaining walls, chimneys, and restoration, built to last.</p>
+        </div>
+        <div class="footer__col">
+          <h3>Services</h3>
+          <ul><li><a href="#services">Brickwork</a></li><li><a href="#services">Stone Veneer</a></li><li><a href="#services">Retaining Walls</a></li><li><a href="#services">Chimneys &amp; Fireplaces</a></li><li><a href="#services">Restoration</a></li></ul>
+        </div>
+        <div class="footer__col">
+          <h3>Explore</h3>
+          <ul><li><a href="#about">About</a></li><li><a href="#work">Work</a></li><li><a href="#contact">Contact</a></li></ul>
+        </div>
+        <div class="footer__col">
+          <h3>Get in touch</h3>
+          <ul><li><span class="footer__static">Serving all of Georgia</span></li><li><a href="#contact">Request a free quote</a></li></ul>
+        </div>
       </div>
-      <p class="footer__tag">Family-run bricklaying &amp; masonry · Serving Georgia since 2015</p>
-      <p class="footer__copy">&copy; <span id="year"></span> ANJ Construction Inc.</p>
+      <div class="footer__base">
+        <span>&copy; <span id="year"></span> ANJ Construction Inc.</span>
+        <span class="footer__meta">Family-run since 2015 · Serving Georgia · Residential &amp; Commercial</span>
+      </div>
     </div>
   </footer>
 
