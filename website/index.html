@@ -112,15 +112,12 @@
 
     <!-- ABOUT -->
     <section class="section reveal" id="about">
-      <div class="container about__inner">
+      <div class="container">
         <div class="section__head">
           <p class="eyebrow">Who we are</p>
           <h2 class="section__title">A family-run bricklaying company built on trust.</h2>
           <p class="section__lead">ANJ Construction has laid brick, block, and stone across Georgia since 2015. Clean lines, honest pricing, and craftsmanship that holds up for decades. We take on both residential and commercial work, and treat every wall like it carries our name.</p>
         </div>
-        <figure class="about__media">
-          <img src="../assets/img/chimney-winder.jpg" alt="Floor-to-ceiling stone veneer fireplace built by ANJ Construction in Winder, Georgia" loading="lazy" />
-        </figure>
       </div>
     </section>
 
@@ -170,24 +167,17 @@
           <h2 class="section__title">Recent <span class="accent">projects.</span></h2>
           <p class="section__lead">Brick, stone, and masonry work from across Georgia.</p>
         </div>
-        <div class="cz reveal" data-carousel data-start="0">
-          <div class="cz__viewport">
-            <div class="cz__track">
-              <article class="cz__slide">
-                <div class="cz__media"><img src="../assets/img/apartment-savanah.jpg" alt="Commercial brick apartment building built by ANJ Construction in Savannah, Georgia" width="1200" height="800" loading="lazy" /></div>
-                <div class="cz__cap"><h3 class="cz__title">Commercial Brick Build</h3><span class="cz__tag">Savannah, GA</span><p class="cz__desc">A multi-unit commercial brick building, laid course by course from the ground up.</p></div>
-              </article>
-              <article class="cz__slide">
-                <div class="cz__media"><img src="../assets/img/fireplace-winder.jpg" alt="Floor-to-ceiling stone veneer fireplace built by ANJ Construction in Winder, Georgia" width="1200" height="800" loading="lazy" /></div>
-                <div class="cz__cap"><h3 class="cz__title">Stone Fireplace</h3><span class="cz__tag">Winder, GA</span><p class="cz__desc">A floor-to-ceiling stone veneer fireplace with a reclaimed-wood mantel and stone hearth.</p></div>
-              </article>
-            </div>
-            <button class="cz__arrow cz__prev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-            <button class="cz__arrow cz__next" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-          </div>
-          <div class="cz__dots" aria-label="Choose a project">
-            <button class="cz__dot" type="button" aria-label="Commercial Brick Build"></button>
-            <button class="cz__dot" type="button" aria-label="Stone Fireplace"></button>
+        <!-- Single featured project for now; the center-focus carousel (styles in
+             styles.css, behavior in script.js) returns once there are two or more
+             distinct project photos. -->
+        <div class="about__inner reveal">
+          <figure class="about__media">
+            <img src="../assets/img/apartment-savanah.jpg" alt="Commercial brick apartment building built by ANJ Construction in Savannah, Georgia" loading="lazy" />
+          </figure>
+          <div class="about__feature">
+            <p class="eyebrow">Savannah, GA</p>
+            <h3>Commercial Brick Build</h3>
+            <p class="section__lead">A multi-unit commercial brick building, laid course by course from the ground up.</p>
           </div>
         </div>
       </div>
