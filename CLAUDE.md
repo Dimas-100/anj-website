@@ -39,4 +39,5 @@ Static **single-page** site (rebuilt 2026-08-18, "String Line" design) + one Ver
 - **Email:** the domain has NO inbound email (no root MX). Never publish an `@anjconstruction.co` mailto unless forwarding (e.g. ImprovMX) is set up first. At Namecheap DNS, never touch `send.anjconstruction.co` (MX + SPF), `resend._domainkey`, or `_dmarc` — invoice sending depends on them.
 - **Never claim "Licensed and insured"** — not confirmed by the owner.
 - Real photos only in `assets/img/` — no stock imagery anywhere on the site.
+- **Never delete `googlea8c14d5a0071eb1c.html`** (repo root) — it's the Google Search Console ownership proof for the `https://www.anjconstruction.co/` property (verified 2026-08-18, sitemap submitted). Google re-checks it; removing it un-verifies the site.
 - The nested `anj-finances/` folder is a separate git repo (gitignored here) — never commit it to this repo.
