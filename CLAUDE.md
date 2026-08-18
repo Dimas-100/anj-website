@@ -35,7 +35,7 @@ Static **single-page** site (rebuilt 2026-08-18, "String Line" design) + one Ver
 ## Editing notes
 
 - **Canonical domain is `www.anjconstruction.co`** (og/canonical/JSON-LD all point there).
-- **Local SEO consistency:** business name `ANJ Construction Inc.` and phone `(770) 900-0163` must exactly match the Google Business Profile everywhere they appear (title, JSON-LD `GeneralContractor` block, header, footer).
+- **Local SEO consistency:** the business name `ANJ Construction Inc.` must exactly match the Google Business Profile everywhere it appears (title, JSON-LD `GeneralContractor` block, header, footer). **The phone number (770) 900-0163 was deliberately removed from the whole site 2026-08-18** (owner request: no dedicated person to answer calls yet) — don't re-add it without the owner asking; when it returns it must exactly match the GBP. Dormant `.nav__phone` / `.contact__phone` / `.footer__phone` CSS rules were kept for that day.
 - **Email:** the domain has NO inbound email (no root MX). Never publish an `@anjconstruction.co` mailto unless forwarding (e.g. ImprovMX) is set up first. At Namecheap DNS, never touch `send.anjconstruction.co` (MX + SPF), `resend._domainkey`, or `_dmarc` — invoice sending depends on them.
 - **Never claim "Licensed and insured"** — not confirmed by the owner.
 - Real photos only in `assets/img/` — no stock imagery anywhere on the site.

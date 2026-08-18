@@ -97,7 +97,7 @@
         })
         .catch(function () {
           status.className = "form__status is-error";
-          status.textContent = "Something went wrong. Please call (770) 900-0163 instead.";
+          status.textContent = "Something went wrong. Please try again in a few minutes.";
         })
         .finally(function () {
           if (button) button.disabled = false;
