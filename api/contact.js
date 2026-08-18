@@ -63,9 +63,9 @@ module.exports = async (req, res) => {
   const rows = [
     ["Name", name],
     ["Email", email],
-    ["Phone", phone || "—"],
-    ["City", city || "—"],
-    ["Project type", projectType || "—"],
+    ["Phone", phone || "-"],
+    ["City", city || "-"],
+    ["Project type", projectType || "-"],
   ]
     .map(
       ([label, value]) =>

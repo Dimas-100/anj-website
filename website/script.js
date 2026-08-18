@@ -92,7 +92,7 @@
             });
           }
           status.className = "form__status is-ok";
-          status.textContent = "Sent — we'll reply within one business day.";
+          status.textContent = "Sent. We'll get back to you within one business day.";
           form.reset();
         })
         .catch(function () {
