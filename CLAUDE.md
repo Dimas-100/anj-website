@@ -10,48 +10,33 @@ Run from `website/`:
 npm run dev    # python -m http.server 5173 --directory ..
 ```
 
-The server serves the **repo root** (not `website/`) so that pages can reach `../assets/...`. Open `http://localhost:5173/website/` — visiting `http://localhost:5173/` will 404 in local dev. No build, lint, or test tooling is configured.
+The server serves the **repo root** (not `website/`) so the page can reach `../assets/...`. Open `http://localhost:5173/website/` — visiting `http://localhost:5173/` will 404 in local dev. No build, lint, or test tooling is configured. The contact form cannot be exercised locally (python's http.server can't run `api/contact.js`) — submitting locally shows the error path with the phone fallback, which is expected.
 
 ## Architecture
 
-Static multi-page site. No framework, no bundler — browsers load `.html`, `styles.css`, and `script.js` directly.
+Static **single-page** site (rebuilt 2026-08-18, "String Line" design) + one Vercel serverless function. No framework, no bundler.
 
-**Two-folder split, intentional:**
-- `assets/` (repo root) — brand logos (`assets/branding/`) and project photos (`assets/img/`). Shared, referenced from HTML/CSS as `../assets/...`. This is why the dev server serves the parent directory.
-- `website/` — all pages, the single `styles.css`, and the single `script.js`.
-
-**Pages:** `index.html`, `about.html`, `services.html`, `projects.html`, `faq.html`, `contact.html`. Nav and footer are now identical across all 6 pages.
-
-**Single shared `script.js` for every page.** It guards each feature with `if (element)` / `querySelectorAll` so unrelated pages don't error. To wire up new page behavior, follow the same pattern — never assume a selector exists. The features it owns:
-- Mobile nav toggle (`.nav__toggle` / `#nav-links`)
-- Scroll chrome: `.is-scrolled` on `.nav`, `.is-visible` on `.back-top`
-- Footer year (`#year`)
-- Project category filters on `projects.html` (`.filter[data-filter]` toggles `.is-hidden` on `.project[data-category]`, sets `aria-pressed`)
-- Scope chips on the contact form (`[data-scope]` buttons populate hidden `#scope-input` as a comma-joined string)
-- Scroll-reveal: `script.js` **auto-adds** `.reveal` to `.section, .contact, .service-detail-section, .gallery-section, .company-detail, .values-section, .capabilities` and an IntersectionObserver adds `.is-visible`. To opt a new section in, give it one of those classes (or extend the selector list).
-- Scroll-spy: in-page hash links inside `.nav__links` get `.is-active` based on which section is in view. (Currently inactive on every page since the unified nav uses page links, not anchors — kept in case in-page anchor nav is reintroduced.)
-- Pointer-tracking hover effect: `.project-card`, `.service-card`, `.quote-path__grid article` get CSS vars `--mx` / `--my`.
-
-**Contact form (`contact.html` + `script.js`):** posts to `https://formspree.io/f/TODO_FORM_ID`. The submit handler detects the `TODO_FORM_ID` substring in the action URL and short-circuits to a fake-success "demo mode" message **without** sending anything. Replace `TODO_FORM_ID` in `contact.html` with the real Formspree form ID before deploy, or all real submissions will silently no-op.
-
-**CSS layering:** `website/styles.css` is ~4,000 lines with three override blocks (lines 1, ~2400, ~3137, ~3467) layered by source order. Don't unpick the older blocks — append new rules at the bottom so they win by cascade order. A `Design polish overrides` block at the end of the file groups the most recent additions; add new tweaks there.
-
-**Theme class:** every `<body>` carries `class="anj-theme"`. The block starting at line ~3467 (`.anj-theme { ... }` and the many `.anj-theme <selector>` rules below it) defines the site-wide design tokens — cream background, dark navbar, Georgia serif headlines, "—"-prefix kicker style, italic-red emphasis on `h1`/`h2` `<span>` children. If you add a new page, set `<body class="anj-theme">` so the design system applies.
+- `website/index.html` — the whole site: hero, course strip, `#services` (Brick/Stone/Block pillars), `#work`, `#about`, `#area`, `#contact`, footer. Old multi-page URLs (`/about`, `/services.html`, …) redirect to these hash anchors via `vercel.json` — if you rename a section id, update the redirects.
+- `website/styles.css` — single coherent stylesheet, design tokens at the top (`--iron`, `--mortar`, `--brick: #c0231d`, etc.). Fonts: Besley (display) / Archivo (body) via Google Fonts. The signature device is the red "string line" (`.stringline` variants). Respects `prefers-reduced-motion`.
+- `website/script.js` — guarded features (never assume a selector exists): mobile nav toggle, nav scroll shadow, footer year, `.reveal` IntersectionObserver, and the contact-form fetch handler.
+- `assets/branding/` — logo lockups, `favicon.svg` + `apple-touch-icon.png` (brick-bond motif). `assets/img/` — **real project photos only, never stock**: web-optimized versions at the top level (EXIF orientation baked in, metadata stripped), camera originals under `assets/img/originals/`. Beware: the originals carry stale EXIF orientation flags — always re-derive web versions with orientation normalized (this caused the "upside down photos" mess in the abandoned `redesign/am-design-transfer` branch).
+- `api/contact.js` — CommonJS Vercel function; the contact form POSTs JSON to `/api/contact` and it emails the submission via **Resend** (`https://api.resend.com/emails`, no npm deps) from `website@anjconstruction.co` to the owner's Gmail. Honeypot field `company` silently drops bots. Requires the `RESEND_API_KEY` env var on the **anj-website** Vercel project; without it the endpoint returns 500 and the site shows the call-us fallback. Never put the key in client code.
 
 ## Deployment
 
-**Live:** the site is deployed at `https://anjconstruction.co` via the Vercel project `anj-website` (team `diazdimas042-8048's projects`), connected to GitHub `Dimas-100/anj-website`. **Every push to `main` auto-deploys to production.** The Vercel project's Root Directory is the repo root (NOT `website/`) — that's required so `vercel.json` is picked up and the `/website/...` rewrite destinations resolve.
+**Live:** `https://www.anjconstruction.co` via Vercel project `anj-website` (team `diazdimas042-8048's projects`), GitHub `Dimas-100/anj-website`. **Every push to `main` auto-deploys to production.** Root Directory is the repo root (required so `vercel.json` and `api/` are picked up).
 
-Vercel config is at repo root in `vercel.json`. It rewrites clean URLs (`/`, `/about`, `/services`, etc.) and the `.html` variants to their files under `/website/`. CSS and JS get the same passthrough. Important consequences:
+`vercel.json` rewrites `/`, `/index.html`, `/styles.css`, `/script.js` into `/website/`, and redirects the retired multi-page URLs to hash anchors. Consequences:
 
-- After deploy, visit `https://<domain>/` not `https://<domain>/website/`.
-- Internal links in HTML still use `*.html` (e.g. `<a href="about.html">`) — Vercel resolves them via the rewrite. Don't strip `.html` from links; that would break local dev.
-- If you add a new page, add **two rewrites** in `vercel.json` for it (clean URL + `.html` variant).
-- **Do NOT add `"cleanUrls": true` to `vercel.json`.** It strips `.html` from rewrite *destinations*, so `/` → `/website/index.html` (and every page route) returns 404 while non-html rewrites like `/styles.css` still work. It was removed for exactly this reason — re-adding it silently breaks the homepage.
+- **Do NOT add `"cleanUrls": true`.** It rewrites destinations to extensionless paths and 404s every page while non-html rewrites still work — it was removed for exactly this reason.
+- `robots.txt`, `sitemap.xml`, and everything under `assets/` are served statically from the repo root; no rewrites needed.
+- `/api/contact` is untouched by the rewrites (they're all exact paths).
 
 ## Editing notes
 
-- The site domain is `anjconstruction.co` (used in og:url / og:image / twitter:image on every page; the `.com` was already taken). It still needs to be connected to the Vercel project's Domains once registered and DNS is pointed.
-- Search the codebase for `TODO` to find unresolved business-info placeholders (Formspree ID, license numbers, etc.).
-- Logo variants live in `assets/branding/`. The two `<img>`-style references previously in each nav were removed — the nav now renders the wordmark as styled HTML text spans. The SVGs in that folder were patched (the originals referenced undefined CSS classes and rendered blank); they're still available for business cards, social posts, etc.
-- "Licensed and insured" is **not** claimed anywhere on the site as of the last review. Add only after the business owner confirms valid licensing and provides documentation.
+- **Canonical domain is `www.anjconstruction.co`** (og/canonical/JSON-LD all point there).
+- **Local SEO consistency:** business name `ANJ Construction Inc.` and phone `(770) 900-0163` must exactly match the Google Business Profile everywhere they appear (title, JSON-LD `GeneralContractor` block, header, footer).
+- **Email:** the domain has NO inbound email (no root MX). Never publish an `@anjconstruction.co` mailto unless forwarding (e.g. ImprovMX) is set up first. At Namecheap DNS, never touch `send.anjconstruction.co` (MX + SPF), `resend._domainkey`, or `_dmarc` — invoice sending depends on them.
+- **Never claim "Licensed and insured"** — not confirmed by the owner.
+- Real photos only in `assets/img/` — no stock imagery anywhere on the site.
+- The nested `anj-finances/` folder is a separate git repo (gitignored here) — never commit it to this repo.
