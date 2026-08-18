@@ -37,25 +37,31 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* Scroll reveal */
-  var revealEls = document.querySelectorAll(".reveal");
+  /* Scroll reveal — deterministic position check (an IntersectionObserver
+     can miss fast jumps and leave content invisible; this never does). */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if (revealEls.length) {
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { rootMargin: "0px 0px -6% 0px", threshold: 0.01 }
-      );
-      revealEls.forEach(function (el) { io.observe(el); });
-    } else {
-      revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-    }
+    var ticking = false;
+    var checkReveals = function () {
+      ticking = false;
+      var limit = window.innerHeight * 1.1;
+      revealEls = revealEls.filter(function (el) {
+        if (el.getBoundingClientRect().top < limit) {
+          el.classList.add("is-visible");
+          return false;
+        }
+        return true;
+      });
+    };
+    var queueCheck = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(checkReveals);
+      }
+    };
+    window.addEventListener("scroll", queueCheck, { passive: true });
+    window.addEventListener("resize", queueCheck, { passive: true });
+    checkReveals();
   }
 
   /* Contact form → /api/contact */
